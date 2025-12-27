@@ -163,6 +163,7 @@ public class AprilTag extends LinearOpMode {
                 .addPath(new BezierLine(PPGPose, scorePose))
                 .setLinearHeadingInterpolation(PPGPose.getHeading(), scorePose.getHeading())
                 .build();
+
     }
     public void buildPathsPGP() {
         // basically just plotting the points for the lines that score the PGP pattern
