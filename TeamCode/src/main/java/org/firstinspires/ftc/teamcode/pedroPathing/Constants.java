@@ -13,7 +13,6 @@ public class Constants
     public static FollowerConstants followerConstants = new FollowerConstants();
 
     public static PathConstraints pathConstraints = new PathConstraints(0.99, 100, 1, 1);
-
     public static Follower createFollower(HardwareMap hardwareMap)
     {
         return new FollowerBuilder(followerConstants, hardwareMap)
@@ -21,7 +20,6 @@ public class Constants
                 .twoWheelLocalizer(localizerConstants)
                 .build();
     }
-
     public static TwoWheelConstants localizerConstants = new TwoWheelConstants()
             .forwardEncoderDirection(Encoder.REVERSE)
             .strafeEncoderDirection(Encoder.REVERSE)
@@ -31,13 +29,9 @@ public class Constants
             .IMU_HardwareMapName("imu")
             .IMU_Orientation
 
-                    (
-                    new RevHubOrientationOnRobot
-                            (
-                            RevHubOrientationOnRobot.LogoFacingDirection.UP,
-                            RevHubOrientationOnRobot.UsbFacingDirection.LEFT
-                            )
-                    );
+                    (new RevHubOrientationOnRobot
+                            (RevHubOrientationOnRobot.LogoFacingDirection.UP,
+                            RevHubOrientationOnRobot.UsbFacingDirection.LEFT));
 
 
 }
