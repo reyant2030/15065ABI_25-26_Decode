@@ -8,7 +8,8 @@ import com.pedropathing.paths.PathConstraints;
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-public class Constants {
+public class Constants
+{
     public static FollowerConstants followerConstants = new FollowerConstants();
 
     public static PathConstraints pathConstraints = new PathConstraints(0.99, 100, 1, 1);
@@ -18,17 +19,15 @@ public class Constants {
         return new FollowerBuilder(followerConstants, hardwareMap)
                 .pathConstraints(pathConstraints)
                 .twoWheelLocalizer(localizerConstants)
-                .forwardEncoderDirection(Encoder.REVERSE)
-                .strafeEncoderDirection(Encoder.REVERSE)
-                .forwardTicksToInches(1)//change to ticks(2 wheel tuning)
                 .build();
     }
 
-
-
     public static TwoWheelConstants localizerConstants = new TwoWheelConstants()
+            .forwardEncoderDirection(Encoder.REVERSE)
+            .strafeEncoderDirection(Encoder.REVERSE)
             .forwardEncoder_HardwareMapName("FrontLeftMotor")
             .strafeEncoder_HardwareMapName("BackRightMotor")
+            .forwardTicksToInches(1)//change to ticks(2 wheel tuning)
             .IMU_HardwareMapName("imu")
             .IMU_Orientation
 
