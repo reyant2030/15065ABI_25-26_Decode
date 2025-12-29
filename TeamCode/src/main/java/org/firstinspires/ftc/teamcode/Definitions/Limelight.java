@@ -12,8 +12,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
 @Disabled
 public class Limelight extends LinearOpMode
 {
-    private Limelight3A limelight;
-    private IMU imu;
+    Limelight3A limelight;
+    IMU imu;
 
     public void runOpMode() throws InterruptedException
     {
