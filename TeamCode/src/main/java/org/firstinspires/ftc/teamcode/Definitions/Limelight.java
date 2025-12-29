@@ -32,7 +32,6 @@ public class Limelight extends LinearOpMode
         else
         {
             limelight.start();
-
             while (opModeIsActive())
             {
                 YawPitchRollAngles orientation = imu.getRobotYawPitchRollAngles();
