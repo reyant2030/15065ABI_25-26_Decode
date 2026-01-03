@@ -12,7 +12,7 @@ public class Outtake {
         outtakeMotor.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.FLOAT);
     }
 
-    public void setVelocity(double velocity) {
+    public void setOuttakeVelocity(double velocity) {
         outtakeMotor.setVelocity(velocity);
     }
 }

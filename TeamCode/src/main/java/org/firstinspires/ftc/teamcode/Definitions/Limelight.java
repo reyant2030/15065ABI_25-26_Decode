@@ -3,48 +3,45 @@ package org.firstinspires.ftc.teamcode.Definitions;
 import com.qualcomm.hardware.limelightvision.LLResult;
 import com.qualcomm.hardware.limelightvision.Limelight3A;
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.IMU;
 
 import org.firstinspires.ftc.robotcore.external.navigation.Pose3D;
 import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
-@Disabled
-public class Limelight extends LinearOpMode
-{
-    Limelight3A limelight;
-    IMU imu;
 
-    public void runOpMode() throws InterruptedException
-    {
+public class Limelight extends OpMode {
+    private Limelight3A limelight;
+    private IMU imu;
+
+    @Override
+    public void init() {
         limelight = hardwareMap.get(Limelight3A.class, "Limelight");
-        limelight.pipelineSwitch(8);
+        limelight.pipelineSwitch(8); //change index
         imu = hardwareMap.get(IMU.class, "imu");
-        RevHubOrientationOnRobot revHubOrientationOnRobot = new RevHubOrientationOnRobot(RevHubOrientationOnRobot.LogoFacingDirection.UP,
-                RevHubOrientationOnRobot.UsbFacingDirection.FORWARD);
+        RevHubOrientationOnRobot revHubOrientationOnRobot = new RevHubOrientationOnRobot(
+                RevHubOrientationOnRobot.LogoFacingDirection.UP, //change orientation
+                RevHubOrientationOnRobot.UsbFacingDirection.FORWARD); //change orientation
         imu.initialize(new IMU.Parameters(revHubOrientationOnRobot));
-        waitForStart();
+    }
 
-        if (isStopRequested())
+    @Override
+    public void start() {
+        limelight.start();
+    }
+
+    @Override
+    public void loop() {
+        YawPitchRollAngles orientation = imu.getRobotYawPitchRollAngles();
+        limelight.updateRobotOrientation(orientation.getYaw());
+        LLResult llResult = limelight.getLatestResult();
+        if (llResult != null && llResult.isValid())
         {
-            return;
-        }
-        else
-        {
-            limelight.start();
-            while (opModeIsActive())
-            {
-                YawPitchRollAngles orientation = imu.getRobotYawPitchRollAngles();
-                limelight.updateRobotOrientation(orientation.getYaw());
-                LLResult llResult = limelight.getLatestResult();
-                if (llResult != null && llResult.isValid())
-                {
-                    Pose3D botPose = llResult.getBotpose();
-                    telemetry.addData("Tx", llResult.getTx());
-                    telemetry.addData("Ty", llResult.getTy());
-                    telemetry.addData("Ta", llResult.getTa());
-                }
-            }
+            Pose3D botPose = llResult.getBotpose();
+            telemetry.addData("Tx", llResult.getTx());
+            telemetry.addData("Ty", llResult.getTy());
+            telemetry.addData("Ta", llResult.getTa());
+            telemetry.addData("BotPose", botPose.toString());
+            telemetry.addData("Yaw", botPose.getOrientation().getYaw());
         }
     }
 }

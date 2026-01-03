@@ -26,7 +26,6 @@ public class FlywheelTuner extends OpMode {
     public void init() {
         outtakeMotor = hardwareMap.get(DcMotorEx.class, "OuttakeMotor");
         outtakeMotor.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
-        outtakeMotor.setDirection(DcMotorEx.Direction.REVERSE);
 
         PIDFCoefficients pidfCoefficients = new PIDFCoefficients(P, 0, 0, F);
         outtakeMotor.setPIDFCoefficients(DcMotor.RunMode.RUN_USING_ENCODER, pidfCoefficients);
