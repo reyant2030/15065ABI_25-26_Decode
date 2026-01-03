@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 
 @TeleOp(name = "Flywheel Tuner")
-public class FlywheelTuner extends OpMode {
+public class FlywheelTuning extends OpMode {
     public DcMotorEx outtakeMotor;
 
     public double highVelocity = 1775;
@@ -20,7 +20,7 @@ public class FlywheelTuner extends OpMode {
 
     double[] stepSizes = {10.0, 1.0, 0.1, 0.001, 0.0001};
 
-    int stepIndex = 1;
+    int stepIndex = 0;
 
     @Override
     public void init() {

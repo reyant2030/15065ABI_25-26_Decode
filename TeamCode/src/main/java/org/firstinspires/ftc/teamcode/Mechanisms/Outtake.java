@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Definitions;
+package org.firstinspires.ftc.teamcode.Mechanisms;
 
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -12,7 +12,7 @@ public class Outtake {
         outtakeMotor.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.FLOAT);
     }
 
-    public void setOuttakeVelocity(double velocity) {
+    public void setVelocity(double velocity) {
         outtakeMotor.setVelocity(velocity);
     }
 }

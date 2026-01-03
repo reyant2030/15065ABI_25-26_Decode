@@ -5,11 +5,11 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 
 @TeleOp(name = "Velocity Tuner")
-public class VelocityTuner extends OpMode {
+public class VelocityTuning extends OpMode {
     public DcMotorEx outtakeMotor;
     double[] stepSizes = {1000.0, 100.0, 10.0, 1.0};
     double velocity = 0;
-    int stepIndex = 1000;
+    int stepIndex = 0;
 
     @Override
     public void init() {
