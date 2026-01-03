@@ -43,12 +43,6 @@ public class MainTeleOp extends OpMode {
             intake.setIntakePower(0);
         }
 
-        if (gamepad2.right_bumper) {
-            rightTransfer.setEncoder(4);
-        }
-        else {
-            rightTransfer.resetEncoder();
-        }
 
         if (gamepad2.left_bumper) {
             leftTransfer.setEncoder(4);
