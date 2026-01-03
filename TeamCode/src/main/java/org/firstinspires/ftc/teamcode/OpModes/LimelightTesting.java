@@ -9,11 +9,10 @@ import com.qualcomm.robotcore.hardware.IMU;
 
 import org.firstinspires.ftc.robotcore.external.navigation.Pose3D;
 import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
-@TeleOp(name = "TestLimelight")
+@TeleOp(name = "Test Limelight")
 public class LimelightTesting extends OpMode {
     private Limelight3A limelight;
     private IMU imu;
-
     @Override
     public void init() {
         limelight = hardwareMap.get(Limelight3A.class, "Limelight");
