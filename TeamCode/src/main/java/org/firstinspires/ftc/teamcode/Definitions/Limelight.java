@@ -16,7 +16,7 @@ public class Limelight extends OpMode {
     @Override
     public void init() {
         limelight = hardwareMap.get(Limelight3A.class, "Limelight");
-        limelight.pipelineSwitch(8); //change index
+        limelight.pipelineSwitch(8);
         imu = hardwareMap.get(IMU.class, "imu");
         RevHubOrientationOnRobot revHubOrientationOnRobot = new RevHubOrientationOnRobot(
                 RevHubOrientationOnRobot.LogoFacingDirection.UP, //change orientation
