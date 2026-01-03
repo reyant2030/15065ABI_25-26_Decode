@@ -185,7 +185,6 @@ public class AutoApril extends LinearOpMode {
 
     }   // end method initAprilTag()
 
-
     /**
      * Add telemetry about AprilTag detections.
      */
@@ -213,5 +212,4 @@ public class AutoApril extends LinearOpMode {
         telemetry.addLine("RBE = Range, Bearing & Elevation");
 
     }   // end method telemetryAprilTag()
-
 }   // end class
