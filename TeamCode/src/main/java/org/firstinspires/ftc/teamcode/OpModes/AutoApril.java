@@ -1,4 +1,4 @@
-/* Copyright (c) 2023 FIRST. All rights reserved.
+    /* Copyright (c) 2023 FIRST. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted (subject to the limitations in the disclaimer below) provided that
@@ -45,7 +45,7 @@ import org.firstinspires.ftc.vision.apriltag.AprilTagProcessor;
 import java.util.List;
 
 @TeleOp(name = "Concept: AprilTag", group = "Concept")
-@Disabled
+@Disabled 
 public class AutoApril extends LinearOpMode {
 
     private static final int ID_20 = 20; //blue
@@ -140,7 +140,7 @@ public class AutoApril extends LinearOpMode {
 
         // Set the camera (webcam vs. built-in RC phone camera).
         if (USE_WEBCAM) {
-            builder.setCamera(hardwareMap.get(WebcamName.class, "Logitech c920"));
+            builder.setCamera(hardwareMap.get(WebcamName.class, "Logitech C920"));
         } else {
             builder.setCamera(BuiltinCameraDirection.BACK);
         }

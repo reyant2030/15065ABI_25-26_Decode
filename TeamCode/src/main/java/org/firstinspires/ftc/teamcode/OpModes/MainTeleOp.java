@@ -35,28 +35,6 @@ public class MainTeleOp extends OpMode {
         rotate = gamepad1.left_stick_x;
         drivetrain.drive(forward, strafe, rotate);
 
-        if (gamepad1.right_bumper) {
-            intake.setIntakePower(1);
-        }
 
-        if (gamepad1.left_bumper) {
-            intake.setIntakePower(0);
-        }
-
-
-        if (gamepad2.left_bumper) {
-            leftTransfer.setEncoder(4);
-        }
-        else {
-            leftTransfer.resetEncoder();
-        }
-
-        if (gamepad2.dpad_up) {
-            outtake.setVelocity(1850);
-        }
-
-        if (gamepad2.dpad_down) {
-            outtake.setVelocity(1500);
-        }
     }
 }
