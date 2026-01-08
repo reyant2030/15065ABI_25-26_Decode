@@ -12,7 +12,6 @@ public class RightColorSensor {
     public enum DetectedColor {
         Purple,
         Green,
-        White,
         Unknown
     }
 
