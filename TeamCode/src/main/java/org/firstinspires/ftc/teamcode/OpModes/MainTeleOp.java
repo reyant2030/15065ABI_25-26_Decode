@@ -54,47 +54,45 @@ public class MainTeleOp extends OpMode {
         }
         lastRightBumper1 = currentRightBumper;
 
-        if (gamepad1.a) {
+        if (gamepad2.a) {
             leftTransfer.setLeftTransferPower(-1);
         }
 
-        if (gamepad1.dpad_down) {
+        if (gamepad2.dpad_down) {
             leftTransfer.setLeftTransferPower(0);
         }
 
-        if (gamepad1.y) {
+        if (gamepad2.y) {
             rightTransfer.setRightTransferPower(-1);
         }
 
-        if (gamepad1.dpad_up) {
+        if (gamepad2.dpad_up) {
             rightTransfer.setRightTransferPower(0);
         }
 
-        if (gamepad1.b) {
+        if (gamepad2.x) {
             rightTransfer.setRightTransferPower(0.7);
         }
         else {
             rightTransfer.setRightTransferPower(0);
         }
 
-        if (gamepad1.x) {
+        if (gamepad2.b) {
             leftTransfer.setLeftTransferPower(0.7);
         }
         else {
             leftTransfer.setLeftTransferPower(0);
         }
 
-        boolean currentLeftBumper = gamepad1.left_bumper;
-
-        if (currentLeftBumper && !lastLeftBumper1) {
-            outtakeOn = !outtakeOn;
-            if (outtakeOn) {
-                outtake.setVelocity(1850);
-            }
-            else {
-                outtake.setVelocity(0);
-            }
+        if (gamepad2.left_bumper) {
+            outtake.setOuttakePower(0.56);
         }
-        lastRightBumper1 = currentRightBumper;
+        else if (gamepad2.right_bumper)
+                {
+                    outtake.setOuttakePower(0.7);
+                }
+        else {
+            outtake.setOuttakePower(0);
+        }
     }
 }
