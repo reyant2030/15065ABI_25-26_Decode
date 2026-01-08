@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.TeleOpModes;
+package org.firstinspires.ftc.teamcode.OpModes;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -35,7 +35,7 @@ public class MainTeleOp extends OpMode {
     }
 
     @Override
-    public void loop() { 
+    public void loop() {
         forward = -gamepad1.right_stick_y;
         strafe = gamepad1.right_stick_x;
         rotate = gamepad1.left_stick_x;
@@ -54,38 +54,42 @@ public class MainTeleOp extends OpMode {
         }
         lastRightBumper1 = currentRightBumper;
 
-        if (gamepad1.a) {
+        if (gamepad2.a) {
             leftTransfer.setLeftTransferPower(-1);
         }
 
-        if (gamepad1.dpad_down) {
+        if (gamepad2.dpad_down) {
             leftTransfer.setLeftTransferPower(0);
         }
 
-        if (gamepad1.y) {
+        if (gamepad2.y) {
             rightTransfer.setRightTransferPower(-1);
         }
 
-        if (gamepad1.dpad_up) {
+        if (gamepad2.dpad_up) {
             rightTransfer.setRightTransferPower(0);
         }
 
-        if (gamepad1.b) {
+        if (gamepad2.x) {
             rightTransfer.setRightTransferPower(0.7);
         }
         else {
             rightTransfer.setRightTransferPower(0);
         }
 
-        if (gamepad1.x) {
+        if (gamepad2.b) {
             leftTransfer.setLeftTransferPower(0.7);
         }
         else {
             leftTransfer.setLeftTransferPower(0);
         }
 
-        if (gamepad1.left_bumper) {
+        if (gamepad2.left_bumper) {
             outtake.setOuttakePower(0.56);
+        }
+        else if (gamepad2.right_bumper)
+        {
+            outtake.setOuttakePower(0.7);
         }
         else {
             outtake.setOuttakePower(0);
