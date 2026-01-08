@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.OpModes;
+package org.firstinspires.ftc.teamcode.TeleOpModes;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -84,17 +84,11 @@ public class MainTeleOp extends OpMode {
             leftTransfer.setLeftTransferPower(0);
         }
 
-        boolean currentLeftBumper = gamepad1.left_bumper;
-
-        if (currentLeftBumper && !lastLeftBumper1) {
-            outtakeOn = !outtakeOn;
-            if (outtakeOn) {
-                outtake.setVelocity(1850);
-            }
-            else {
-                outtake.setVelocity(0);
-            }
+        if (gamepad1.left_bumper) {
+            outtake.setOuttakePower(0.56);
         }
-        lastRightBumper1 = currentRightBumper;
+        else {
+            outtake.setOuttakePower(0);
+        }
     }
 }
