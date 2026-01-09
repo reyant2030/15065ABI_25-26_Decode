@@ -37,7 +37,7 @@ public class MainTeleOp extends OpMode {
     @Override
     public void loop() { 
         forward = -gamepad1.right_stick_y;
-        strafe = gamepad1.right_stick_x;
+        strafe = gamepad1.right_stick_x * 1.1;
         rotate = gamepad1.left_stick_x;
         drivetrain.drive(forward, strafe, rotate);
 

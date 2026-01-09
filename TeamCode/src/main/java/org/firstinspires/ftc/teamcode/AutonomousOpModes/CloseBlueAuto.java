@@ -10,7 +10,7 @@ import org.firstinspires.ftc.teamcode.Mechanisms.LeftTransfer;
 import org.firstinspires.ftc.teamcode.Mechanisms.Outtake;
 import org.firstinspires.ftc.teamcode.Mechanisms.RightTransfer;
 
-@Autonomous
+@Autonomous(name = "CloseAuto")
 public class CloseBlueAuto extends LinearOpMode {
     DcMotor frontLeftMotor, frontRightMotor, backRightMotor, backLeftMotor;
 
@@ -45,21 +45,21 @@ public class CloseBlueAuto extends LinearOpMode {
 
         waitForStart();
 
-        outtake.setOuttakePower(0.66);
+        outtake.setOuttakePower(0.53);
 
-        backLeftMotor.setDirection(DcMotor.Direction.FORWARD);
-        backRightMotor.setDirection(DcMotor.Direction.FORWARD);
-        frontLeftMotor.setDirection(DcMotor.Direction.FORWARD);
-        frontRightMotor.setDirection(DcMotor.Direction.FORWARD);
+        backLeftMotor.setDirection(DcMotor.Direction.REVERSE);
+        frontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
+
         backRightMotor.setPower(1);
         backLeftMotor.setPower(1);
         frontLeftMotor.setPower(1);
         frontRightMotor.setPower(1);
-        sleep(3000);
+        sleep(900);
         backRightMotor.setPower(0);
         backLeftMotor.setPower(0);
         frontLeftMotor.setPower(0);
         frontRightMotor.setPower(0);
+        sleep(5000);
 
         leftTransfer.setLeftTransferPower(1);
         sleep(3000);
@@ -68,12 +68,23 @@ public class CloseBlueAuto extends LinearOpMode {
         rightTransfer.setRightTransferPower(1);
         sleep(3000);
         rightTransfer.setRightTransferPower(0);
-        sleep(1000);
+        sleep(3000);
 
-        intake.setIntakePower(1);
-
-        leftTransfer.setLeftTransferPower(1);
+        intake.setIntakePower(0.7);
         rightTransfer.setRightTransferPower(1);
+        rightTransfer.setRightTransferPower(1);
+        sleep(5000);
+
+        backRightMotor.setPower(1);
+        backLeftMotor.setPower(-1);
+        frontLeftMotor.setPower(1);
+        frontRightMotor.setPower(-1);
+        sleep(750);
+        backRightMotor.setPower(0);
+        backLeftMotor.setPower(0);
+        frontLeftMotor.setPower(0);
+        frontRightMotor.setPower(0);
+        sleep(3000);
 
         stop();
     }
