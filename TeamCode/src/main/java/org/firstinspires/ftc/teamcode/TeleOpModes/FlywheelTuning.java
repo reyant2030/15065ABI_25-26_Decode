@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 public class FlywheelTuning extends OpMode {
     public DcMotorEx outtakeMotor;
 
-    public double highVelocity = 1775;
+    public double highVelocity = 1850;
     public double lowVelocity = 1500;
 
     double curTargetVelocity = highVelocity;
