@@ -1,5 +1,4 @@
-package org.firstinspires.ftc.teamcode.OpModes;
-
+package org.firstinspires.ftc.teamcode.TeleOpModes;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -37,7 +36,7 @@ public class MainTeleOp extends OpMode {
     @Override
     public void loop() {
         forward = -gamepad1.right_stick_y;
-        strafe = gamepad1.right_stick_x * 1.1;
+        strafe = gamepad1.right_stick_x;
         rotate = gamepad1.left_stick_x;
         drivetrain.drive(forward, strafe, rotate);
 

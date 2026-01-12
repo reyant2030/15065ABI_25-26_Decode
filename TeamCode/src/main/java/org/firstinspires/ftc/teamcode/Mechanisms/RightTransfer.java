@@ -10,6 +10,7 @@ public class RightTransfer {
         rightTransferMotor = hwMap.get(DcMotor.class, "RightTransferMotor");
         rightTransferMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rightTransferMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        rightTransferMotor.setDirection(DcMotor.Direction.REVERSE);
     }
 
     public void setRightTransferPower(double power) {
