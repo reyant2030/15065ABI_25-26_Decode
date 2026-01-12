@@ -18,3 +18,4 @@ public class LeftTransfer {
         leftTransferMotor.setPower(power);
     }
 }
+//cool comment 6
