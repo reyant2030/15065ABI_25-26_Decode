@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 public class FlywheelTuning extends OpMode {
     public DcMotorEx outtakeMotor;
 
-    public double highVelocity = 1775;
+    public double highVelocity = 1850;
     public double lowVelocity = 1500;
 
     double curTargetVelocity = highVelocity;
@@ -83,4 +83,7 @@ public class FlywheelTuning extends OpMode {
         telemetry.addData("Step Size","%.4f (B Button)", stepSizes[stepIndex]);
     }
 }
+//cool comment 8
+//cool comment 11
+
 

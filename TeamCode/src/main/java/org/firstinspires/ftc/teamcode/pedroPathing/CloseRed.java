@@ -35,8 +35,8 @@ public class CloseRed extends OpMode
 
     PathState pathState;
 
-    private final Pose startPos = new Pose(124.09316770186336, 123.0869565217391, Math.toRadians(-133));
-    private final Pose shootPos = new Pose(70.658, 69.764, Math.toRadians(-133));
+    private final Pose startPos = new Pose(123.752, 122.484, Math.toRadians(-141));
+    private final Pose shootPos = new Pose(124.8, 122.48447204968943, Math.toRadians(-138));
     private PathChain driveStartPosShootPos;
 
     public void buildPaths() {
@@ -110,3 +110,6 @@ public class CloseRed extends OpMode
         telemetry.addData("Path time", pathTimer.getElapsedTimeSeconds());
     }
 }
+
+//cool comment 4
+//cool comment 10
