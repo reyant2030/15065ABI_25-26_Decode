@@ -42,7 +42,10 @@ public class MainTeleOp extends OpMode {
 
         if (gamepad1.right_bumper) {
             intake.setIntakePower(1);
-         }
+        }
+        else {
+            intake.setIntakePower(0);
+        }
 
         if (gamepad2.a) {
             leftTransfer.setLeftTransferPower(-1);
