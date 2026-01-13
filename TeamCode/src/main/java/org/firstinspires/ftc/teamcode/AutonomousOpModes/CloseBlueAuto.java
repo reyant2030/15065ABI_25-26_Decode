@@ -70,7 +70,6 @@ public class CloseBlueAuto extends LinearOpMode {
         rightTransfer.setRightTransferPower(0);
         sleep(3000);
 
-        intake.setIntakePower(0.7);
         rightTransfer.setRightTransferPower(1);
         rightTransfer.setRightTransferPower(1);
         sleep(5000);

@@ -40,18 +40,9 @@ public class MainTeleOp extends OpMode {
         rotate = gamepad1.left_stick_x;
         drivetrain.drive(forward, strafe, rotate);
 
-        boolean currentRightBumper = gamepad1.right_bumper;
-
-        if (currentRightBumper && !lastRightBumper1) {
-            intakeOn = !intakeOn;
-            if (intakeOn) {
-                intake.setIntakePower(0.6);
-            }
-            else {
-                intake.setIntakePower(0);
-            }
-        }
-        lastRightBumper1 = currentRightBumper;
+        if (gamepad1.right_bumper) {
+            intake.setIntakePower(1);
+         }
 
         if (gamepad2.a) {
             leftTransfer.setLeftTransferPower(-1);

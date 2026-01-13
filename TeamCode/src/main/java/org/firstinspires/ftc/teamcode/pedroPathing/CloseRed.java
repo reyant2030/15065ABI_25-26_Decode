@@ -110,5 +110,3 @@ public class CloseRed extends OpMode
         telemetry.addData("Path time", pathTimer.getElapsedTimeSeconds());
     }
 }
-
-//cool comment 4
