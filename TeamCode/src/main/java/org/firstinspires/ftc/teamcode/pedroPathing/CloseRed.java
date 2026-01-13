@@ -30,23 +30,32 @@ public class CloseRed extends OpMode
 
         DRIVE_STARTPOS_SHOOT_POS,
 
-        SHOOT_PRELOAD
+        SHOOT_PRELOAD,
+
+        DRIVE_SHOOT_POS_LEAVEPOS,
     }
 
     PathState pathState;
 
-    private final Pose startPos = new Pose(123.752, 122.484, Math.toRadians(-141));
-    private final Pose shootPos = new Pose(124.8, 122.48447204968943, Math.toRadians(-138));
+    private final Pose startPos = new Pose(123.975, 122.708, Math.toRadians(-144));
+    private final Pose shootPos = new Pose(86.636, 85.583, Math.toRadians(-138));
+    private final Pose leavePos = new Pose(85.583, 116.242, Math.toRadians(85));
     private PathChain driveStartPosShootPos;
-
+    private PathChain driveShootPosLeavePos;
     public void buildPaths() {
         driveStartPosShootPos = follower.pathBuilder()
                 .addPath(new BezierLine(startPos, shootPos))
                 .setGlobalLinearHeadingInterpolation(startPos.getHeading(), shootPos.getHeading())
                 .build();
+
+        driveShootPosLeavePos = follower.pathBuilder()
+                .addPath(new BezierLine(shootPos, leavePos))
+                .setGlobalLinearHeadingInterpolation(shootPos.getHeading(), leavePos.getHeading())
+                .build();
     }
 
-    public void statePathUpdate() {
+    public void statePathUpdate()
+    {
         switch (pathState)
         {
             case DRIVE_STARTPOS_SHOOT_POS:
@@ -55,16 +64,21 @@ public class CloseRed extends OpMode
                 break;
 
             case SHOOT_PRELOAD:
-                if (!follower.isBusy())
+                if (!follower.isBusy() && pathTimer.getElapsedTimeSeconds() > 5)
                 {
-                    outtake.setOuttakePower(0.53);
-                    // leftTransfer.setLeftTransferPower(1);
-                    // leftTransfer.setLeftTransferPower(0);
-                    // rightTransfer.setRightTransferPower(1);
-                    // rightTransfer.setRightTransferPower(0);
-                    telemetry.addLine("Done Path 1");
+                    follower.followPath(driveShootPosLeavePos, true);
+                    setPathState(PathState.DRIVE_SHOOT_POS_LEAVEPOS);
+                    //redo outtake stuff here
                 }
                 break;
+
+            case DRIVE_SHOOT_POS_LEAVEPOS:
+            {
+                if (!follower.isBusy())
+                {
+                telemetry.addLine("Done Leave Auto");
+                }
+            }
             default:
                 telemetry.addLine("No State Comanded");
                 break;
