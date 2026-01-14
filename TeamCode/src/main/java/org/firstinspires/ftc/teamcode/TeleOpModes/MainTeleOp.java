@@ -1,4 +1,6 @@
 package org.firstinspires.ftc.teamcode.TeleOpModes;
+import static android.os.SystemClock.sleep;
+
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -17,12 +19,6 @@ public class MainTeleOp extends OpMode {
     RightTransfer rightTransfer = new RightTransfer();
     LeftTransfer leftTransfer = new LeftTransfer();
     Outtake outtake = new Outtake();
-
-    boolean intakeOn = false;
-    boolean outtakeOn = false;
-
-    boolean lastRightBumper1 = false;
-    boolean lastLeftBumper1 = false;
 
     @Override
     public void init() {
@@ -77,15 +73,25 @@ public class MainTeleOp extends OpMode {
             leftTransfer.setLeftTransferPower(0);
         }
 
-        if (gamepad2.left_bumper) {
+        if (gamepad2.right_bumper) {
             outtake.setOuttakePower(0.56);
         }
-        else if (gamepad2.right_bumper)
-        {
+
+        if (gamepad2.left_bumper) {
             outtake.setOuttakePower(0.7);
         }
         else {
             outtake.setOuttakePower(0);
+        }
+
+        if (gamepad2.dpad_up) {
+            rightTransfer.setRightTransferPower(1);
+            sleep(500);
+            rightTransfer.setRightTransferPower(0);
+            sleep(1500);
+            leftTransfer.setLeftTransferPower(1);
+            sleep(500);
+            leftTransfer.setLeftTransferPower(0);
         }
     }
 }
