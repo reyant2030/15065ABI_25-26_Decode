@@ -6,21 +6,25 @@ import com.qualcomm.robotcore.hardware.NormalizedRGBA;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-public class RightColorSensor {
+public class RightColorSensor
+{
     NormalizedColorSensor rightColorSensor;
 
-    public enum DetectedColor {
+    public enum DetectedColor
+    {
         Purple,
         Green,
         Unknown
     }
 
-    public void initRightColorSensor(HardwareMap hwMap) {
+    public void initRightColorSensor(HardwareMap hwMap)
+    {
         rightColorSensor = hwMap.get(NormalizedColorSensor.class, "RightColorSensor");
         rightColorSensor.setGain(55);
     }
 
-    public DetectedColor getDetectedColor(Telemetry telemetry) {
+    public DetectedColor getDetectedColor(Telemetry telemetry)
+    {
         NormalizedRGBA colors = rightColorSensor.getNormalizedColors();
 
         float normRed, normGreen, normBlue;
@@ -33,14 +37,14 @@ public class RightColorSensor {
         telemetry.addData("Green", normGreen);
         telemetry.addData("Blue", normBlue);
 
-        if (normRed > 0.47 && normGreen < 0.77 && normBlue < 0.6)
-        {
-            return DetectedColor.Purple;
-        }
-
-        else if (normRed > 0.32 && normGreen < 0.57 && normBlue < 0.43)
+        if (normRed > 0.54 && normGreen < 0.86 && normBlue < 0.76)
         {
             return DetectedColor.Green;
+        }
+
+        else if (normRed > 0.42 && normGreen < 0.60 && normBlue < 0.72)
+        {
+            return DetectedColor.Purple;
         }
 
 
