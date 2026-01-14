@@ -12,12 +12,12 @@ public class LeftColorSensor {
     public enum DetectedColor {
         Purple,
         Green,
-        White,
         Unknown
     }
 
-    public void initLeftColorSensor(HardwareMap hwMap) {
+    public void initRightColorSensor(HardwareMap hwMap) {
         leftColorSensor = hwMap.get(NormalizedColorSensor.class, "LeftColorSensor");
+        leftColorSensor.setGain(55);
     }
 
     public DetectedColor getDetectedColor(Telemetry telemetry) {
@@ -33,6 +33,22 @@ public class LeftColorSensor {
         telemetry.addData("Green", normGreen);
         telemetry.addData("Blue", normBlue);
 
+        if (normRed > 0.44 && normRed < 0.45 && normGreen > 0.62 && normGreen < 0.64
+                && normBlue > 0.73 && normBlue < 0.75)
+        {
+            return DetectedColor.Purple;
+        }
+
+        else if (normRed > 0.43 && normRed < 0.44 && normGreen > 0.93 && normGreen < 0.96
+                && normBlue > 0.735 && normBlue < 0.79)
+        {
+            return DetectedColor.Green;
+        }
+
+        /*
+         Purple = 1, 1, 1
+         Green = 0.5, 1, 1
+         */
         return DetectedColor.Unknown;
     }
 }

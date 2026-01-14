@@ -31,8 +31,8 @@ public class MainTeleOp extends OpMode {
 
     @Override
     public void loop() {
-        forward = -gamepad1.left_stick_y;
-        strafe = gamepad1.left_stick_x;
+        forward = gamepad1.left_stick_y;
+        strafe = -gamepad1.left_stick_x;
         rotate = gamepad1.right_stick_x;
         drivetrain.drive(forward, strafe, rotate);
 
@@ -75,9 +75,12 @@ public class MainTeleOp extends OpMode {
 
         if (gamepad2.right_bumper) {
             outtake.setVelocity(1850);
+            outtake.getVelocity();
         }
+
         else if (gamepad2.left_bumper) {
             outtake.setVelocity(1600);
+            outtake.getVelocity();
         }
         else {
             outtake.setVelocity(0);

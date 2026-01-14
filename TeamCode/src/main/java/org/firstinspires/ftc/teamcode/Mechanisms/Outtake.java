@@ -13,6 +13,10 @@ public class Outtake {
         outtakeMotor.setVelocityPIDFCoefficients(1200, 0, 0, 14.6322);
     }
 
+    public void getVelocity() {
+        outtakeMotor.getVelocity();
+    }
+
     public void setVelocity(double velocity) {
         outtakeMotor.setPower(velocity);
     }
