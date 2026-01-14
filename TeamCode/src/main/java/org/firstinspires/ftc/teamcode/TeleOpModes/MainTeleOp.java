@@ -74,14 +74,13 @@ public class MainTeleOp extends OpMode {
         }
 
         if (gamepad2.right_bumper) {
-            outtake.setOuttakePower(0.56);
+            outtake.setVelocity(1850);
         }
-
-        if (gamepad2.left_bumper) {
-            outtake.setOuttakePower(0.7);
+        else if (gamepad2.left_bumper) {
+            outtake.setVelocity(1500);
         }
         else {
-            outtake.setOuttakePower(0);
+            outtake.setVelocity(0);
         }
 
         if (gamepad2.dpad_up) {
