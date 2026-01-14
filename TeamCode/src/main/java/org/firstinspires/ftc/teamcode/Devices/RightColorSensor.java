@@ -33,15 +33,17 @@ public class RightColorSensor {
         telemetry.addData("Green", normGreen);
         telemetry.addData("Blue", normBlue);
 
-        /* if (normRed > 0.47 && normGreen < 0.77 && normBlue < 0.6)
+        if (normRed > 0.44 && normRed < 0.45 && normGreen > 0.62 && normGreen < 0.64
+                && normBlue > 0.73 && normBlue < 0.75)
         {
             return DetectedColor.Purple;
         }
 
-        else if (normRed > 0.32 && normGreen < 0.57 && normBlue < 0.43)
+        else if (normRed > 0.43 && normRed < 0.44 && normGreen > 0.93 && normGreen < 0.96
+                && normBlue > 0.735 && normBlue < 0.79)
         {
             return DetectedColor.Green;
-        } */
+        }
 
 
 
