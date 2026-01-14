@@ -45,8 +45,6 @@ public class RightColorSensor {
             return DetectedColor.Green;
         }
 
-
-
         /*
          Purple = 1, 1, 1
          Green = 0.5, 1, 1

@@ -21,6 +21,6 @@ public class ColorSensorTesting extends OpMode
     public void loop()
     {
         detectedColor = rightColorSensor.getDetectedColor(telemetry);
-        // telemetry.addData("Color Detected", detectedColor);
+        telemetry.addData("Color Detected", detectedColor);
     }
 }
