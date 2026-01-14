@@ -32,16 +32,16 @@ public class CloseRed extends OpMode
 
         DRIVE_SHOOT_POS_LEAVE_POS,
 
-        DRIVE_SHOOT_POS_TOP_BALL_3_POS, DRIVE_TOP_BALLS_3_Pos
+        DRIVE_SHOOT_POS_BALL3_POS
     }
     PathState pathState;
     private final Pose startPos = new Pose(123.975, 122.708, Math.toRadians(-144));
     private final Pose shootPos1 = new Pose(86.636, 85.583, Math.toRadians(-138));
     private final Pose leavePos = new Pose(85.583, 116.242, Math.toRadians(85));
-    private final Pose topBall3Pos = new Pose(122.845,85.907, Math.toRadians(1));
+    private final Pose ball3Pos = new Pose(122.845,85.907, Math.toRadians(1));
     private PathChain driveStartPosShootPos;
     private PathChain driveShootPosLeavePos;
-    private PathChain driveTopBalls3Pos;
+    private PathChain driverShootPosdriveball3Pos;
     public void buildPaths() {
         driveStartPosShootPos = follower.pathBuilder()
                 .addPath(new BezierLine(startPos, shootPos1))
@@ -53,9 +53,9 @@ public class CloseRed extends OpMode
                 .setGlobalLinearHeadingInterpolation(shootPos1.getHeading(), leavePos.getHeading())
                 .build();
 
-        driveTopBalls3Pos = follower.pathBuilder()
-                .addPath(new BezierLine(shootPos1, topBall3Pos))
-                .setGlobalLinearHeadingInterpolation(shootPos1.getHeading(), topBall3Pos.getHeading())
+        driverShootPosdriveball3Pos = follower.pathBuilder()
+                .addPath(new BezierLine(shootPos1, ball3Pos))
+                .setGlobalLinearHeadingInterpolation(shootPos1.getHeading(), ball3Pos.getHeading())
                 .build();
 
     }
@@ -68,22 +68,24 @@ public class CloseRed extends OpMode
                  setPathState(PathState.SHOOT_PRELOAD);
                 break;
 
-            case SHOOT_PRELOAD:
-                if (!follower.isBusy() && pathTimer.getElapsedTimeSeconds() > 5)
-                {
-                    follower.followPath(driveShootPosLeavePos, true);
-                    setPathState(PathState.DRIVE_SHOOT_POS_LEAVE_POS);
-                    //redo outtake stuff here
-                }
-                break;
-
-            case DRIVE_SHOOT_POS_TOP_BALL_3_POS:
+            case DRIVE_SHOOT_POS_BALL3_POS:
             {
                 if (!follower.isBusy())
                 {
                     telemetry.addLine("Done Leave Auto");
                 }
             }
+
+            case SHOOT_PRELOAD:
+                if (!follower.isBusy() && pathTimer.getElapsedTimeSeconds() > 5)
+                {
+
+                   follower.followPath(driveShootPosLeavePos, true);
+                    setPathState(PathState.DRIVE_SHOOT_POS_BALL3_POS);
+                   // redo outtake stuff here
+                }
+                break;
+
             case DRIVE_SHOOT_POS_LEAVE_POS:
             {
                 if (!follower.isBusy())
