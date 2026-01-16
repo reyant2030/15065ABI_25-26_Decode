@@ -11,10 +11,11 @@ public class LeftTransfer {
         leftTransferMotor = hwMap.get(DcMotorEx.class, "LeftTransferMotor");
         leftTransferMotor.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
         leftTransferMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-        leftTransferMotor.setDirection(DcMotor.Direction.FORWARD);
+        leftTransferMotor.setDirection(DcMotor.Direction.REVERSE);
     }
 
-    public void setLeftTransferPower(double power) {
+    public void setLeftTransferPower(double power)
+    {
         leftTransferMotor.setPower(power);
     }
 }
