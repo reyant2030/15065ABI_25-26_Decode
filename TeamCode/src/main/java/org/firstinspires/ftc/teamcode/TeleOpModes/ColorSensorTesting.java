@@ -18,6 +18,7 @@ public class ColorSensorTesting extends OpMode
     public void init()
     {
         rightColorSensor.initRightColorSensor(hardwareMap);
+        leftColorSensor.initRightColorSensor(hardwareMap);
     }
 
     @Override

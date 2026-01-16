@@ -45,7 +45,7 @@ public class CloseBlueAuto extends LinearOpMode {
 
         waitForStart();
 
-        outtake.setOuttakePower(0.53);
+        outtake.setVelocity(1850);
 
         backLeftMotor.setDirection(DcMotor.Direction.REVERSE);
         frontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
