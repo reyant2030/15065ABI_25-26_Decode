@@ -22,8 +22,6 @@ public class MainTeleOp extends OpMode {
     LeftTransfer leftTransfer = new LeftTransfer();
     RightColorSensor rightColorSensor = new RightColorSensor();
     LeftColorSensor leftColorSensor = new LeftColorSensor();
-    RightColorSensor.DetectedColor detectedColor;
-    LeftColorSensor.DetectedColor detectedColor2;
     Outtake outtake = new Outtake();
 
     @Override
@@ -51,6 +49,13 @@ public class MainTeleOp extends OpMode {
             intake.setIntakePower(0);
         }
 
+        if (gamepad1.left_bumper) {
+            intake.setIntakePower(-1);
+        }
+        else {
+            intake.setIntakePower(0);
+        }
+
         if (gamepad2.dpad_up) {
             rightTransfer.setRightTransferPower(1);
             sleep(500);
@@ -60,8 +65,7 @@ public class MainTeleOp extends OpMode {
             sleep(500);
             leftTransfer.setLeftTransferPower(0);
         }
-
-        if (gamepad2.dpad_up) {
+        else if (gamepad2.dpad_down) {
             leftTransfer.setLeftTransferPower(1);
             sleep(500);
             leftTransfer.setLeftTransferPower(0);
@@ -69,13 +73,23 @@ public class MainTeleOp extends OpMode {
             rightTransfer.setRightTransferPower(1);
             sleep(500);
             rightTransfer.setRightTransferPower(0);
+        }
+
+        if (gamepad2.right_trigger > 0.5) {
+            rightTransfer.setRightTransferPower(-1);
+        }
+        else if (gamepad2.left_trigger > 0.5) {
+            leftTransfer.setLeftTransferPower(-1);
+        }
+        else {
+            rightTransfer.setRightTransferPower(0);
+            leftTransfer.setLeftTransferPower(0);
         }
 
         if (gamepad2.right_bumper) {
             outtake.setVelocity(1900);
             outtake.getVelocity();
         }
-
         else if (gamepad2.left_bumper) {
             outtake.setVelocity(1750);
             outtake.getVelocity();
