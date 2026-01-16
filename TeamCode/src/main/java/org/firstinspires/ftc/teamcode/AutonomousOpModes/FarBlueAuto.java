@@ -60,18 +60,14 @@ public class FarBlueAuto extends LinearOpMode {
         frontRightMotor.setPower(0);
         sleep(5000);
 
-        leftTransfer.setLeftTransferPower(1);
+        leftTransfer.setLeftTransferPower(-1);
         sleep(3000);
         leftTransfer.setLeftTransferPower(0);
         sleep(1000);
-        rightTransfer.setRightTransferPower(1);
+        rightTransfer.setRightTransferPower(-1);
         sleep(5000);
         rightTransfer.setRightTransferPower(0);
         sleep(3000);
-
-        rightTransfer.setRightTransferPower(1);
-        rightTransfer.setRightTransferPower(1);
-        sleep(500);
 
         backRightMotor.setPower(-1);
         backLeftMotor.setPower(-0.25);
@@ -83,5 +79,7 @@ public class FarBlueAuto extends LinearOpMode {
         frontLeftMotor.setPower(0);
         frontRightMotor.setPower(0);
         sleep(5000);
+
+        stop();
     }
 }
