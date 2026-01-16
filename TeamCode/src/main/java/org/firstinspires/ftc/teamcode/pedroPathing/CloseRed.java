@@ -15,114 +15,96 @@ import org.firstinspires.ftc.teamcode.Mechanisms.RightTransfer;
 @Autonomous
 public class CloseRed extends OpMode
 {
-    Intake intake = new Intake();
-    RightTransfer rightTransfer = new RightTransfer();
-    LeftTransfer leftTransfer = new LeftTransfer();
-    Outtake outtake = new Outtake();
+
     private Follower follower;
     private Timer pathTimer, opModeTimer;
 
-    public enum PathState {
-        // START POSITION_END POSITION
-        // DRIVE > ATTEMPT TO SCORE ARTIFACT
+    public enum PathState
+    {
+        // START POSITION END POSITION
+        // DRIVE > MOVEMENT STATE
+        // SHOOT > ATTEMPT TO SCORE THE ARTIFACT
 
-        DRIVE_STARTPOS_SHOOT_POS,
+        DRIVE_STARTPOS_CLOSESHOOTPOS,
 
         SHOOT_PRELOAD,
 
-        DRIVE_SHOOT_POS_LEAVE_POS,
+         DRIVE_CLOSESHOOTPOS_TOPROW,
 
-        DRIVE_SHOOT_POS_BALL3_POS
     }
+
     PathState pathState;
-    private final Pose startPos = new Pose(123.975, 122.708, Math.toRadians(-144));
-    private final Pose shootPos1 = new Pose(86.636, 85.583, Math.toRadians(-138));
-    private final Pose leavePos = new Pose(85.583, 116.242, Math.toRadians(85));
-    private final Pose ball3Pos = new Pose(122.845,85.907, Math.toRadians(1));
-    private PathChain driveStartPosShootPos;
-    private PathChain driveShootPosLeavePos;
-    private PathChain driverShootPosdriveball3Pos;
-    public void buildPaths() {
-        driveStartPosShootPos = follower.pathBuilder()
-                .addPath(new BezierLine(startPos, shootPos1))
-                .setGlobalLinearHeadingInterpolation(startPos.getHeading(), shootPos1.getHeading())
+
+    private final Pose startPose = new Pose(124.32298136645963,122.53416149068322, Math.toRadians(-141));
+    private final Pose closeShootPos = new Pose(86.18633540372672,85.639751552795, Math.toRadians(-138));
+    private final Pose topRow = new Pose (123.20496894409939,83.6273291925466, Math.toRadians(-3));
+    private PathChain driveStartPoseCloseShootPose;
+    private PathChain driveCloseShootPoseTopRow;
+
+    public void buildPaths()
+    {
+        driveStartPoseCloseShootPose = follower.pathBuilder()
+                .addPath(new BezierLine(startPose, closeShootPos))
+                .setLinearHeadingInterpolation(startPose.getHeading(), closeShootPos.getHeading())
                 .build();
 
-        driveShootPosLeavePos = follower.pathBuilder()
-                .addPath(new BezierLine(shootPos1, leavePos))
-                .setGlobalLinearHeadingInterpolation(shootPos1.getHeading(), leavePos.getHeading())
+        driveCloseShootPoseTopRow = follower.pathBuilder()
+                .addPath(new BezierLine(closeShootPos, topRow))
+                .setLinearHeadingInterpolation(closeShootPos.getHeading(), topRow.getHeading())
                 .build();
-
-        driverShootPosdriveball3Pos = follower.pathBuilder()
-                .addPath(new BezierLine(shootPos1, ball3Pos))
-                .setGlobalLinearHeadingInterpolation(shootPos1.getHeading(), ball3Pos.getHeading())
-                .build();
-
     }
+
     public void statePathUpdate()
     {
-        switch (pathState)
+        switch(pathState)
         {
-            case DRIVE_STARTPOS_SHOOT_POS:
-                follower.followPath(driveStartPosShootPos, true);
-                 setPathState(PathState.SHOOT_PRELOAD);
+            case DRIVE_STARTPOS_CLOSESHOOTPOS:
+                follower.followPath(driveStartPoseCloseShootPose, true);
+                setPathState(PathState.SHOOT_PRELOAD);
                 break;
-
-            case DRIVE_SHOOT_POS_BALL3_POS:
-            {
-                if (!follower.isBusy())
-                {
-                    telemetry.addLine("Done Leave Auto");
-                }
-            }
 
             case SHOOT_PRELOAD:
-                if (!follower.isBusy() && pathTimer.getElapsedTimeSeconds() > 5)
+                //flywheel logic
+                if(!follower.isBusy())
                 {
-
-                   follower.followPath(driveShootPosLeavePos, true);
-                    setPathState(PathState.DRIVE_SHOOT_POS_BALL3_POS);
-                   // redo outtake stuff here
+                    //flywheel logic
+                    telemetry.addLine("Done Path 1");
                 }
                 break;
 
-            case DRIVE_SHOOT_POS_LEAVE_POS:
-            {
-                if (!follower.isBusy())
-                {
-                telemetry.addLine("Done Leave Auto");
-                }
-           }
+            case DRIVE_CLOSESHOOTPOS_TOPROW:
+                follower.followPath(driveCloseShootPoseTopRow, true);
+                break;
+
             default:
-                telemetry.addLine("No State Comanded");
+                telemetry.addLine("No State Commanded");
                 break;
         }
     }
 
     public void setPathState(PathState newState)
     {
-        pathState = newState;
-        pathTimer.resetTimer();
+         pathState = newState;
+         pathTimer.resetTimer();
     }
-
-
     @Override
     public void init()
     {
-        pathState = PathState.DRIVE_STARTPOS_SHOOT_POS;
+        pathState = PathState.DRIVE_STARTPOS_CLOSESHOOTPOS;
+        pathState = PathState.DRIVE_CLOSESHOOTPOS_TOPROW;
         pathTimer = new Timer();
-        opModeTimer = new Timer();
+        opModeTimer.resetTimer();
         follower = Constants.createFollower(hardwareMap);
 
-        buildPaths();;
-        follower.setPose(startPos);
+        buildPaths();
+        follower.setPose(startPose);
     }
 
     @Override
     public void start()
     {
-        opModeTimer.resetTimer();
-        setPathState(pathState);
+         opModeTimer.resetTimer();
+         setPathState(pathState);
     }
 
     @Override
@@ -130,7 +112,6 @@ public class CloseRed extends OpMode
     {
         follower.update();
         statePathUpdate();
-
         telemetry.addData("path state", pathState.toString());
         telemetry.addData("x", follower.getPose().getX());
         telemetry.addData("y", follower.getPose().getY());
@@ -138,8 +119,3 @@ public class CloseRed extends OpMode
         telemetry.addData("Path time", pathTimer.getElapsedTimeSeconds());
     }
 }
-
-//cool comment 4
-//cool comment 10
-//cool comment 11
-//cool comment 12
