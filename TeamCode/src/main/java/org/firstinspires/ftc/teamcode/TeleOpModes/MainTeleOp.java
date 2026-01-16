@@ -79,7 +79,7 @@ public class MainTeleOp extends OpMode {
         }
 
         else if (gamepad2.left_bumper) {
-            outtake.setVelocity(1600);
+            outtake.setVelocity(2000);
             outtake.getVelocity();
         }
         else {
