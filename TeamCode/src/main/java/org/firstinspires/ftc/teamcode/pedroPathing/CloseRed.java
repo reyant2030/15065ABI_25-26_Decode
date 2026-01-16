@@ -63,6 +63,7 @@ public class CloseRed extends OpMode
                 {
                     //flywheel logic
                     telemetry.addLine("Done Path 1");
+                    setPathState(PathState.DRIVE_CLOSESHOOTPOS_TOPROW);
                 }
                 break;
 
@@ -84,7 +85,6 @@ public class CloseRed extends OpMode
     public void init()
     {
         pathState = PathState.DRIVE_STARTPOS_CLOSESHOOTPOS;
-        pathState = PathState.DRIVE_CLOSESHOOTPOS_TOPROW;
         pathTimer = new Timer();
         opModeTimer = new Timer();
         opModeTimer.resetTimer();
