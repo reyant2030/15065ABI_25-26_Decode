@@ -7,17 +7,13 @@ import com.pedropathing.paths.PathChain;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.pedropathing.util.Timer;
-
-import org.firstinspires.ftc.teamcode.Mechanisms.Intake;
-import org.firstinspires.ftc.teamcode.Mechanisms.LeftTransfer;
-import org.firstinspires.ftc.teamcode.Mechanisms.Outtake;
-import org.firstinspires.ftc.teamcode.Mechanisms.RightTransfer;
 @Autonomous
 public class CloseRed extends OpMode
 {
 
     private Follower follower;
-    private Timer pathTimer, opModeTimer;
+    private Timer pathTimer;
+    private Timer opModeTimer;
 
     public enum PathState
     {
@@ -53,7 +49,6 @@ public class CloseRed extends OpMode
                 .setLinearHeadingInterpolation(closeShootPos.getHeading(), topRow.getHeading())
                 .build();
     }
-
     public void statePathUpdate()
     {
         switch(pathState)
@@ -62,7 +57,6 @@ public class CloseRed extends OpMode
                 follower.followPath(driveStartPoseCloseShootPose, true);
                 setPathState(PathState.SHOOT_PRELOAD);
                 break;
-
             case SHOOT_PRELOAD:
                 //flywheel logic
                 if(!follower.isBusy())
@@ -81,7 +75,6 @@ public class CloseRed extends OpMode
                 break;
         }
     }
-
     public void setPathState(PathState newState)
     {
          pathState = newState;
@@ -93,6 +86,7 @@ public class CloseRed extends OpMode
         pathState = PathState.DRIVE_STARTPOS_CLOSESHOOTPOS;
         pathState = PathState.DRIVE_CLOSESHOOTPOS_TOPROW;
         pathTimer = new Timer();
+        opModeTimer = new Timer();
         opModeTimer.resetTimer();
         follower = Constants.createFollower(hardwareMap);
 
