@@ -32,7 +32,6 @@ public class FlyWheelLogic
         rightTransferMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
         rightTransferMotor.setDirection(DcMotor.Direction.REVERSE);
     }
-
     public void setRightTransferPower(double power)
     {
         rightTransferMotor.setPower(power);

@@ -27,20 +27,30 @@ public class CloseRed extends OpMode
 
         DRIVE_STARTPOS_CLOSESHOOTPOS,
 
-        SHOOT_PRELOAD
+        SHOOT_PRELOAD,
+
+         DRIVE_CLOSESHOOTPOS_TOPROW,
+
     }
 
     PathState pathState;
 
     private final Pose startPose = new Pose(124.32298136645963,122.53416149068322, Math.toRadians(-141));
     private final Pose closeShootPos = new Pose(86.18633540372672,85.639751552795, Math.toRadians(-138));
+    private final Pose topRow = new Pose (123.20496894409939,83.6273291925466, Math.toRadians(-3));
     private PathChain driveStartPoseCloseShootPose;
+    private PathChain driveCloseShootPoseTopRow;
 
     public void buildPaths()
     {
         driveStartPoseCloseShootPose = follower.pathBuilder()
                 .addPath(new BezierLine(startPose, closeShootPos))
                 .setLinearHeadingInterpolation(startPose.getHeading(), closeShootPos.getHeading())
+                .build();
+
+        driveCloseShootPoseTopRow = follower.pathBuilder()
+                .addPath(new BezierLine(closeShootPos, topRow))
+                .setLinearHeadingInterpolation(closeShootPos.getHeading(), topRow.getHeading())
                 .build();
     }
 
@@ -62,6 +72,10 @@ public class CloseRed extends OpMode
                 }
                 break;
 
+            case DRIVE_CLOSESHOOTPOS_TOPROW:
+                follower.followPath(driveCloseShootPoseTopRow, true);
+                break;
+
             default:
                 telemetry.addLine("No State Commanded");
                 break;
@@ -77,6 +91,7 @@ public class CloseRed extends OpMode
     public void init()
     {
         pathState = PathState.DRIVE_STARTPOS_CLOSESHOOTPOS;
+        pathState = PathState.DRIVE_CLOSESHOOTPOS_TOPROW;
         pathTimer = new Timer();
         opModeTimer.resetTimer();
         follower = Constants.createFollower(hardwareMap);
