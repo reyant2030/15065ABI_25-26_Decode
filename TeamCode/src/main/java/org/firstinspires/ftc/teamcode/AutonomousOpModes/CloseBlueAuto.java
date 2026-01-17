@@ -10,7 +10,7 @@ import org.firstinspires.ftc.teamcode.Mechanisms.LeftTransfer;
 import org.firstinspires.ftc.teamcode.Mechanisms.Outtake;
 import org.firstinspires.ftc.teamcode.Mechanisms.RightTransfer;
 
-@Autonomous(name = "CloseAuto")
+@Autonomous(name = "CloseBlueAuto")
 public class CloseBlueAuto extends LinearOpMode {
     DcMotor frontLeftMotor, frontRightMotor, backRightMotor, backLeftMotor;
 
