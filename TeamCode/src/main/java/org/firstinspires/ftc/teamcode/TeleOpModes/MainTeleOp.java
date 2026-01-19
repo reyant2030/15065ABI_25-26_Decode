@@ -8,9 +8,7 @@ import org.firstinspires.ftc.teamcode.Devices.LeftColorSensor;
 import org.firstinspires.ftc.teamcode.Devices.RightColorSensor;
 import org.firstinspires.ftc.teamcode.Mechanisms.Drivetrain;
 import org.firstinspires.ftc.teamcode.Mechanisms.Intake;
-import org.firstinspires.ftc.teamcode.Mechanisms.LeftTransfer;
 import org.firstinspires.ftc.teamcode.Mechanisms.Outtake;
-import org.firstinspires.ftc.teamcode.Mechanisms.RightTransfer;
 
 @TeleOp(name = "Main TeleOp")
 public class MainTeleOp extends OpMode {

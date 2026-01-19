@@ -5,9 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.teamcode.Mechanisms.Intake;
-import org.firstinspires.ftc.teamcode.Mechanisms.LeftTransfer;
 import org.firstinspires.ftc.teamcode.Mechanisms.Outtake;
-import org.firstinspires.ftc.teamcode.Mechanisms.RightTransfer;
 
 @Autonomous
 public class FarBlueAuto extends LinearOpMode {
