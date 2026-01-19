@@ -18,3 +18,4 @@ public class Intake {
     }
 }
 
+// Ew, shortcuts
