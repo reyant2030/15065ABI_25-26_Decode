@@ -17,3 +17,5 @@ public class Booster {
         boosterMotor.setPower(power);
     }
 }
+
+// thanks Sreeja
