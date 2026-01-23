@@ -1,5 +1,4 @@
 package org.firstinspires.ftc.teamcode.TeleOpModes;
-import static android.os.SystemClock.sleep;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -16,8 +15,6 @@ public class MainTeleOp extends OpMode {
     double forward, strafe, rotate;
 
     Intake intake = new Intake();
-    RightTransfer rightTransfer = new RightTransfer();
-    LeftTransfer leftTransfer = new LeftTransfer();
     RightColorSensor rightColorSensor = new RightColorSensor();
     LeftColorSensor leftColorSensor = new LeftColorSensor();
     Outtake outtake = new Outtake();
@@ -26,10 +23,8 @@ public class MainTeleOp extends OpMode {
     public void init() {
         drivetrain.initDrivetrain(hardwareMap);
         intake.initIntake(hardwareMap);
-        rightTransfer.initRightTransfer(hardwareMap);
         rightColorSensor.initRightColorSensor(hardwareMap);
         leftColorSensor.initRightColorSensor(hardwareMap);
-        leftTransfer.initLeftTransfer(hardwareMap);
         outtake.initOuttake(hardwareMap);
     }
 
@@ -50,48 +45,16 @@ public class MainTeleOp extends OpMode {
             intake.setIntakePower(0);
         }
 
-        if (gamepad2.dpad_up) {
-            rightTransfer.setRightTransferPower(1);
-            sleep(500);
-            rightTransfer.setRightTransferPower(0);
-            sleep(1500);
-            leftTransfer.setLeftTransferPower(1);
-            sleep(500);
-            leftTransfer.setLeftTransferPower(0);
-        }
-        else if (gamepad2.dpad_down) {
-            leftTransfer.setLeftTransferPower(1);
-            sleep(500);
-            leftTransfer.setLeftTransferPower(0);
-            sleep(1500);
-            rightTransfer.setRightTransferPower(1);
-            sleep(500);
-            rightTransfer.setRightTransferPower(0);
-        }
-
-        if (gamepad2.right_trigger > 0.5) {
-            rightTransfer.setRightTransferPower(-1);
-        }
-        else if (gamepad2.left_trigger > 0.5) {
-            leftTransfer.setLeftTransferPower(-1);
-        }
-        else {
-            rightTransfer.setRightTransferPower(0);
-            leftTransfer.setLeftTransferPower(0);
-        }
-
         if (gamepad2.right_bumper) {
             outtake.setVelocity(1900);
-            outtake.getVelocity();
         }
         else if (gamepad2.left_bumper) {
             outtake.setVelocity(1750);
-            outtake.getVelocity();
         }
         else {
             outtake.setVelocity(0);
         }
     }
 }
-// cool comment 14
-////FU
+
+// Fate was in ABI's favor today

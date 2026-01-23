@@ -10,11 +10,6 @@ public class Outtake {
         outtakeMotor = hwMap.get(DcMotorEx.class, "OuttakeMotor");
         outtakeMotor.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
         outtakeMotor.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.FLOAT);
-        outtakeMotor.setVelocityPIDFCoefficients(323,0.15, 0, 23);
-    }
-
-    public void getVelocity() {
-        outtakeMotor.getVelocity();
     }
 
     public void setVelocity(double velocity) {

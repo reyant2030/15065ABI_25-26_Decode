@@ -169,5 +169,3 @@ public class AutoApril extends LinearOpMode {
 
     }
 }
-
-// cool comment 3
