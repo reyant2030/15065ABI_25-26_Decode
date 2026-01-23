@@ -16,5 +16,3 @@ public class Intake {
         intakeMotor.setPower(power);
     }
 }
-
-// Ew, shortcuts

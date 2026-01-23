@@ -9,4 +9,8 @@ public class Transfer {
     public void initTransfer(HardwareMap hwMap) {
         transferServo = hwMap.get(Servo.class, "TransferMotor");
     }
+
+    public void setTransferPosition(double position) {
+        transferServo.setPosition(position);
+    }
 }

@@ -3,8 +3,7 @@ package org.firstinspires.ftc.teamcode.TeleOpModes;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.Devices.LeftColorSensor;
-import org.firstinspires.ftc.teamcode.Devices.RightColorSensor;
+import org.firstinspires.ftc.teamcode.Devices.IntakeColorSensor;
 import org.firstinspires.ftc.teamcode.Mechanisms.Drivetrain;
 import org.firstinspires.ftc.teamcode.Mechanisms.Intake;
 import org.firstinspires.ftc.teamcode.Mechanisms.Outtake;
@@ -15,7 +14,7 @@ public class MainTeleOp extends OpMode {
     double forward, strafe, rotate;
 
     Intake intake = new Intake();
-    RightColorSensor rightColorSensor = new RightColorSensor();
+    IntakeColorSensor rightColorSensor = new IntakeColorSensor();
     LeftColorSensor leftColorSensor = new LeftColorSensor();
     Outtake outtake = new Outtake();
 
@@ -36,10 +35,10 @@ public class MainTeleOp extends OpMode {
         drivetrain.drive(forward, strafe, rotate);
 
         if (gamepad1.right_bumper) {
-            intake.setIntakePower(1);
+            intake.setIntakePower(-1);
         }
         else if(gamepad1.left_bumper){
-            intake.setIntakePower(-1);
+            intake.setIntakePower(1);
         }
         else{
             intake.setIntakePower(0);

@@ -37,7 +37,7 @@ public class Drivetrain {
 
 
         double maxPower = 1.0;
-        double maxSpeed = 1.0; // Outreach Purposes
+        double maxSpeed = 1.0;
 
 
         maxPower = Math.max(maxPower, Math.abs(frontLeftPower));

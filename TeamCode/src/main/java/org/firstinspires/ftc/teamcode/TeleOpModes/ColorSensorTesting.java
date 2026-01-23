@@ -3,14 +3,13 @@ package org.firstinspires.ftc.teamcode.TeleOpModes;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.Devices.LeftColorSensor;
-import org.firstinspires.ftc.teamcode.Devices.RightColorSensor;
+import org.firstinspires.ftc.teamcode.Devices.IntakeColorSensor;
 
 @TeleOp(name = "Color Sensor Testing")
 public class ColorSensorTesting extends OpMode
 {
-    RightColorSensor rightColorSensor = new RightColorSensor();
-    RightColorSensor.DetectedColor detectedColor;
+    IntakeColorSensor rightColorSensor = new IntakeColorSensor();
+    IntakeColorSensor.DetectedColor detectedColor;
     LeftColorSensor leftColorSensor = new LeftColorSensor();
     LeftColorSensor.DetectedColor detectedColor2;
 
