@@ -5,17 +5,18 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Mechanisms.Booster;
 import org.firstinspires.ftc.teamcode.Mechanisms.Outtake;
+import org.firstinspires.ftc.teamcode.Mechanisms.Spindexer;
 import org.firstinspires.ftc.teamcode.Mechanisms.Transfer;
 
 @TeleOp(name = "Test TeleOp ")
 public class TestTeleOp extends OpMode {
-    Outtake outtake = new Outtake();
+    Spindexer spindexer = new Spindexer();
     Booster booster = new Booster();
     Transfer transfer = new Transfer();
 
     @Override
     public void init() {
-        outtake.initOuttake(hardwareMap);
+        spindexer.initSpindexer(hardwareMap);
         booster.initBooster(hardwareMap);
         transfer.initTransfer(hardwareMap);
     }
@@ -23,11 +24,11 @@ public class TestTeleOp extends OpMode {
     @Override
     public void loop() {
         if (gamepad1.b) {
-            booster.setBoosterPower(-1);
+            booster.setBoosterPower(0.5);
         }
 
         if (gamepad1.x) {
-            outtake.setVelocity(1600);
+            spindexer.setSpindexerPosition(2);
         }
 
         if (gamepad1.a) {
