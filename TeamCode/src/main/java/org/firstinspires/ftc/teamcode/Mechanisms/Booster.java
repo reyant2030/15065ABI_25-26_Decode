@@ -10,12 +10,9 @@ public class Booster {
         boosterMotor = hwMap.get(DcMotor.class, "BoosterMotor");
         boosterMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         boosterMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-        boosterMotor.setDirection(DcMotor.Direction.REVERSE);
     }
 
     public void setBoosterPower(double power) {
         boosterMotor.setPower(power);
     }
 }
-
-// it's because of youuuuu
