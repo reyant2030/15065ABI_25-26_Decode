@@ -35,7 +35,6 @@ public class Drivetrain {
         double frontRightPower = forward - strafe - rotate;
         double backRightPower = forward + strafe - rotate;
 
-
         double maxPower = 1.0;
         double maxSpeed = 1.0;
 
