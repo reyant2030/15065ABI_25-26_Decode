@@ -10,6 +10,7 @@ public class Outtake {
         outtakeMotor = hwMap.get(DcMotorEx.class, "OuttakeMotor");
         outtakeMotor.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
         outtakeMotor.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.FLOAT);
+        outtakeMotor.setDirection(DcMotorEx.Direction.REVERSE);
     }
 
     public void setOuttakeVelocity(double velocity) {
