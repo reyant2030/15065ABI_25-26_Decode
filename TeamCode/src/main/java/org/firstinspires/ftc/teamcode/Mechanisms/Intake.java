@@ -10,6 +10,7 @@ public class Intake {
         intakeMotor = hwMap.get(DcMotor.class, "IntakeMotor");
         intakeMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         intakeMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        intakeMotor.setDirection(DcMotor.Direction.REVERSE);
     }
 
     public void setIntakePower(double power) {

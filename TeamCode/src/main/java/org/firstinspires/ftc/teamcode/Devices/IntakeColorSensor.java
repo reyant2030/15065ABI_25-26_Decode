@@ -15,7 +15,7 @@ public class IntakeColorSensor {
         Unknown
     }
 
-    public void initRightColorSensor(HardwareMap hwMap) {
+    public void initIntakeColorSensor(HardwareMap hwMap) {
         intakeColorSensor = hwMap.get(NormalizedColorSensor.class, "IntakeColorSensor");
         intakeColorSensor.setGain(55);
     }
