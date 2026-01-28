@@ -17,7 +17,7 @@ public class IntakeColorSensor {
 
     public void initIntakeColorSensor(HardwareMap hwMap) {
         intakeColorSensor = hwMap.get(NormalizedColorSensor.class, "IntakeColorSensor");
-        intakeColorSensor.setGain(55);
+        intakeColorSensor.setGain(15);
     }
 
     public DetectedColor getDetectedColor(Telemetry telemetry) {
@@ -33,6 +33,14 @@ public class IntakeColorSensor {
         telemetry.addData("Green", normGreen);
         telemetry.addData("Blue", normBlue);
 
-        return DetectedColor.Unknown;
+        if (normRed > 0.6 && normGreen > 0.75 && normBlue < 1.1) {
+            return DetectedColor.Purple;
+        }
+        else if (normRed < 0.35 && normGreen < 1.1 && normBlue > 0.8) {
+            return DetectedColor.Green;
+        }
+        else {
+            return DetectedColor.Unknown;
+        }
     }
 }

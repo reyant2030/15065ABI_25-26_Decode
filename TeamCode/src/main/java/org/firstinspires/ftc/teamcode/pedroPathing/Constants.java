@@ -39,7 +39,6 @@ public class Constants
                             RevHubOrientationOnRobot.UsbFacingDirection.RIGHT
                     )
             );
-
     public static MecanumConstants driveConstants = new MecanumConstants()
             .maxPower(1)
             .rightFrontMotorName("FrontRightMotor")
