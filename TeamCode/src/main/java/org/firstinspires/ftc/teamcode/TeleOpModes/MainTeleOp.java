@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.TeleOpModes;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 
 import org.firstinspires.ftc.teamcode.Mechanisms.Booster;
@@ -23,6 +24,11 @@ public class MainTeleOp extends OpMode {
     double ticks = 145.1;
     double target;
 
+    boolean lastRB = false;
+    boolean outtakeOn = false;
+    boolean lastA = false;
+    boolean boosterOn = false;
+
     @Override
     public void init() {
         drivetrain.initDrivetrain(hardwareMap);
@@ -31,15 +37,14 @@ public class MainTeleOp extends OpMode {
         booster.initBooster(hardwareMap);
         outtake.initOuttake(hardwareMap);
 
-        spindexerMotor= hardwareMap.get(DcMotorEx.class, "SpindexerMotor");
+        spindexerMotor = hardwareMap.get(DcMotorEx.class, "SpindexerMotor");
         spindexerMotor.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
         spindexerMotor.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.FLOAT);
-        spindexerMotor.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+        spindexerMotor.setPositionPIDFCoefficients(0.01);
     }
 
     @Override
     public void loop() {
-
         forward = -gamepad1.right_stick_y;
         strafe = gamepad1.right_stick_x;
         rotate = gamepad1.left_stick_x;
@@ -54,37 +59,50 @@ public class MainTeleOp extends OpMode {
             booster.setBoosterPower(0);
         }
 
-        if (gamepad1.dpad_up) {
-            encoder();
+        if (gamepad1.left_bumper) {
+            intake.setIntakePower(-1);
+            booster.setBoosterPower(-0.5);
         }
 
-        if (gamepad1.x) {
-            transfer.setTransferPosition(0.8);
+        if (gamepad2.left_bumper) {
+            encoder(3);
+        }
+
+        if (gamepad2.x) {
+            transfer.setTransferPosition(1);
         }
         else {
             transfer.setTransferPosition(0);
         }
 
-        if (gamepad1.a) {
-            booster.setBoosterPower(0.5);
+        if (gamepad2.a && !lastA) {
+            boosterOn = !boosterOn;
         }
-        else {
+        lastA = gamepad2.a;
+
+        if (boosterOn) {
+            booster.setBoosterPower(0.5);
+        } else {
             booster.setBoosterPower(0);
         }
 
-        if (gamepad1.left_bumper) {
-            outtake.setOuttakeVelocity(1300);
+        if (gamepad2.right_bumper && !lastRB) {
+            outtakeOn = !outtakeOn;
         }
-        else {
+        lastRB = gamepad2.right_bumper;
+
+        if (outtakeOn) {
+            outtake.setOuttakeVelocity(2000);
+        } else {
             outtake.setOuttakeVelocity(0);
         }
     }
 
-    public void encoder() {
-        spindexerMotor.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
-        target += 48.3666666667;
+    public void encoder(double turning) {
+        spindexerMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        target = ticks/turning;
         spindexerMotor.setTargetPosition((int)target);
-        spindexerMotor.setTargetPositionTolerance(5);
+        spindexerMotor.setTargetPositionTolerance(3);
         spindexerMotor.setPower(0.5);
         spindexerMotor.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
     }

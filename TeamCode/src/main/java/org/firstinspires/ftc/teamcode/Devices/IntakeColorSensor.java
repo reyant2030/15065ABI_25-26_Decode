@@ -12,6 +12,7 @@ public class IntakeColorSensor {
     public enum DetectedColor {
         Purple,
         Green,
+        Random,
         Unknown
     }
 
@@ -36,8 +37,11 @@ public class IntakeColorSensor {
         if (normRed > 0.6 && normGreen > 0.75 && normBlue < 1.1) {
             return DetectedColor.Purple;
         }
-        else if (normRed < 0.35 && normGreen < 1.1 && normBlue > 0.8) {
+        else if (normRed < 0.35  && normGreen < 1.1 && normBlue > 0.8) {
             return DetectedColor.Green;
+        }
+        else if (normRed > 0.15 && normGreen > 0.20 && normBlue > 0.15) {
+            return DetectedColor.Random;
         }
         else {
             return DetectedColor.Unknown;
