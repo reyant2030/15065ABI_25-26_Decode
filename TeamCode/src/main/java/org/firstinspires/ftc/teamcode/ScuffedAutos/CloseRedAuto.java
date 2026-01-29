@@ -96,4 +96,4 @@ public class CloseRedAuto extends LinearOpMode {
     }
 }
 
-// some comment
+//
