@@ -22,7 +22,6 @@ public class FlyWheelLogic
     {
         intakeMotor.setPower(power);
     }
-
     private DcMotor rightTransferMotor;
 
     public void initRightTransfer(HardwareMap hwMap)
