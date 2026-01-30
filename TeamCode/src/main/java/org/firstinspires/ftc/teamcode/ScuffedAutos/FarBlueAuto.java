@@ -9,8 +9,8 @@ import org.firstinspires.ftc.teamcode.Mechanisms.Outtake;
 import org.firstinspires.ftc.teamcode.Mechanisms.Spindexer;
 import org.firstinspires.ftc.teamcode.Mechanisms.Transfer;
 
-@Autonomous(name = "CloseBlueAuto")
-public class CloseBlueAuto extends LinearOpMode {
+@Autonomous(name = "FarBlueAuto")
+public class FarBlueAuto extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         DcMotor frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor;
@@ -47,14 +47,14 @@ public class CloseBlueAuto extends LinearOpMode {
 
         waitForStart();
 
-        outtake.setOuttakeVelocity(1300);
+        outtake.setOuttakeVelocity(2000);
         booster.setBoosterPower(0.5);
 
-        frontRightMotor.setPower(-1);
-        backRightMotor.setPower(-1);
-        frontLeftMotor.setPower(-1);
-        backLeftMotor.setPower(-1);
-        sleep(700);
+        frontRightMotor.setPower(1);
+        backRightMotor.setPower(1);
+        frontLeftMotor.setPower(1);
+        backLeftMotor.setPower(1);
+        sleep(90);
         frontRightMotor.setPower(0);
         backRightMotor.setPower(0);
         frontLeftMotor.setPower(0);
@@ -78,7 +78,7 @@ public class CloseBlueAuto extends LinearOpMode {
         sleep(500);
 
         spindexer.encoder(3);
-        sleep(2000);
+        sleep(4000);
 
         transfer.setTransferPosition(0.8);
         sleep(500);
@@ -86,7 +86,7 @@ public class CloseBlueAuto extends LinearOpMode {
         sleep(500);
 
         spindexer.encoder(3);
-        sleep(2000);
+        sleep(4000);
 
         transfer.setTransferPosition(0.8);
         sleep(500);
@@ -94,10 +94,22 @@ public class CloseBlueAuto extends LinearOpMode {
         sleep(500);
 
         frontRightMotor.setPower(-1);
-        backRightMotor.setPower(1);
+        backRightMotor.setPower(-1);
         frontLeftMotor.setPower(1);
-        backLeftMotor.setPower(-1);
-        sleep(750);
+        backLeftMotor.setPower(1);
+        sleep(90);
+        frontRightMotor.setPower(0);
+        backRightMotor.setPower(0);
+        frontLeftMotor.setPower(0);
+        backLeftMotor.setPower(0);
+        sleep(1000);
+
+        frontRightMotor.setPower(1);
+        backRightMotor.setPower(-1);
+
+        frontLeftMotor.setPower(-1);
+        backLeftMotor.setPower(1);
+        sleep(500);
         frontRightMotor.setPower(0);
         backRightMotor.setPower(0);
         frontLeftMotor.setPower(0);
