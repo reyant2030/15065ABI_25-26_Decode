@@ -13,7 +13,7 @@ public class Spindexer {
         spindexerMotor = hardwareMap.get(DcMotorEx.class, "SpindexerMotor");
         spindexerMotor.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
         spindexerMotor.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.FLOAT);
-        spindexerMotor.setPositionPIDFCoefficients(0.01);
+        spindexerMotor.setPositionPIDFCoefficients(21);
     }
 
     public void encoder(double turning) {
