@@ -47,14 +47,14 @@ public class FarBlueAuto extends LinearOpMode {
 
         waitForStart();
 
-        outtake.setOuttakeVelocity(2000);
+        outtake.setOuttakeVelocity(1950);
         booster.setBoosterPower(0.5);
 
         frontRightMotor.setPower(1);
         backRightMotor.setPower(1);
         frontLeftMotor.setPower(1);
         backLeftMotor.setPower(1);
-        sleep(90);
+        sleep(300);
         frontRightMotor.setPower(0);
         backRightMotor.setPower(0);
         frontLeftMotor.setPower(0);
@@ -65,48 +65,47 @@ public class FarBlueAuto extends LinearOpMode {
         backRightMotor.setPower(1);
         frontLeftMotor.setPower(-1);
         backLeftMotor.setPower(-1);
-        sleep(90);
+        sleep(100);
         frontRightMotor.setPower(0);
         backRightMotor.setPower(0);
         frontLeftMotor.setPower(0);
         backLeftMotor.setPower(0);
-        sleep(1000);
-
-        transfer.setTransferPosition(0.8);
-        sleep(500);
-        transfer.setTransferPosition(0);
-        sleep(500);
-
-        spindexer.encoder(3);
-        sleep(4000);
-
-        transfer.setTransferPosition(0.8);
-        sleep(500);
-        transfer.setTransferPosition(0);
-        sleep(500);
-
-        spindexer.encoder(3);
-        sleep(4000);
-
-        transfer.setTransferPosition(0.8);
-        sleep(500);
-        transfer.setTransferPosition(0);
-        sleep(500);
+        sleep(5000);
 
         frontRightMotor.setPower(-1);
-        backRightMotor.setPower(-1);
+        backRightMotor.setPower(1);
         frontLeftMotor.setPower(1);
-        backLeftMotor.setPower(1);
-        sleep(90);
+        backLeftMotor.setPower(-1);
+        sleep(95);
         frontRightMotor.setPower(0);
         backRightMotor.setPower(0);
         frontLeftMotor.setPower(0);
         backLeftMotor.setPower(0);
         sleep(1000);
+
+        transfer.setTransferPosition(0.8);
+        sleep(500);
+        transfer.setTransferPosition(0);
+        sleep(500);
+
+        spindexer.encoder(3);
+        sleep(5000);
+
+        transfer.setTransferPosition(0.8);
+        sleep(500);
+        transfer.setTransferPosition(0);
+        sleep(500);
+
+        spindexer.encoder(3);
+        sleep(5000);
+
+        transfer.setTransferPosition(0.8);
+        sleep(500);
+        transfer.setTransferPosition(0);
+        sleep(5000);
 
         frontRightMotor.setPower(1);
         backRightMotor.setPower(-1);
-
         frontLeftMotor.setPower(-1);
         backLeftMotor.setPower(1);
         sleep(500);

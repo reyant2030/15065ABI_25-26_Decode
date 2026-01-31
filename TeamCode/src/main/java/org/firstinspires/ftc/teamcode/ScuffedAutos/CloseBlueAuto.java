@@ -47,14 +47,14 @@ public class CloseBlueAuto extends LinearOpMode {
 
         waitForStart();
 
-        outtake.setOuttakeVelocity(1300);
+        outtake.setOuttakeVelocity(1200);
         booster.setBoosterPower(0.5);
 
         frontRightMotor.setPower(-1);
         backRightMotor.setPower(-1);
         frontLeftMotor.setPower(-1);
         backLeftMotor.setPower(-1);
-        sleep(700);
+        sleep(850);
         frontRightMotor.setPower(0);
         backRightMotor.setPower(0);
         frontLeftMotor.setPower(0);
@@ -97,7 +97,18 @@ public class CloseBlueAuto extends LinearOpMode {
         backRightMotor.setPower(1);
         frontLeftMotor.setPower(1);
         backLeftMotor.setPower(-1);
-        sleep(750);
+        sleep(550);
+        frontRightMotor.setPower(0);
+        backRightMotor.setPower(0);
+        frontLeftMotor.setPower(0);
+        backLeftMotor.setPower(0);
+        sleep(1000);
+
+        frontRightMotor.setPower(-1);
+        backRightMotor.setPower(-1);
+        frontLeftMotor.setPower(-1);
+        backLeftMotor.setPower(-1);
+        sleep(600);
         frontRightMotor.setPower(0);
         backRightMotor.setPower(0);
         frontLeftMotor.setPower(0);

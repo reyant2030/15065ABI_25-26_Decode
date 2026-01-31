@@ -67,17 +67,6 @@ public class MainTeleOp extends OpMode {
             transfer.setTransferPosition(0);
         }
 
-        if (gamepad2.a && !lastA) {
-            boosterOn = !boosterOn;
-        }
-        lastA = gamepad2.a;
-
-        if (boosterOn) {
-            booster.setBoosterPower(0.5);
-        } else {
-            booster.setBoosterPower(0);
-        }
-
         if (gamepad2.right_bumper && !lastRB) {
             outtakeOn = !outtakeOn;
         }
@@ -85,8 +74,10 @@ public class MainTeleOp extends OpMode {
 
         if (outtakeOn) {
             outtake.setOuttakeVelocity(2000);
+            booster.setBoosterPower(0.5);
         } else {
             outtake.setOuttakeVelocity(0);
+            booster.setBoosterPower(0);
         }
     }
 }

@@ -11,7 +11,7 @@ public class Outtake {
         outtakeMotor.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
         outtakeMotor.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.FLOAT);
         outtakeMotor.setDirection(DcMotorEx.Direction.REVERSE);
-        outtakeMotor.setVelocityPIDFCoefficients(200, 0.15, 0, 17);
+        outtakeMotor.setPositionPIDFCoefficients(0.05);
     }
 
     public void setOuttakeVelocity(double velocity) {

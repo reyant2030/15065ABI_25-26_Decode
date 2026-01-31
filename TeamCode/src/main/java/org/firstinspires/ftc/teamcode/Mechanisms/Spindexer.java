@@ -12,7 +12,7 @@ public class Spindexer {
     public void initSpindexer(HardwareMap hardwareMap) {
         spindexerMotor = hardwareMap.get(DcMotorEx.class, "SpindexerMotor");
         spindexerMotor.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
-        spindexerMotor.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.FLOAT);
+        spindexerMotor.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
         spindexerMotor.setPositionPIDFCoefficients(21);
     }
 
@@ -21,7 +21,11 @@ public class Spindexer {
         target = ticks/turning;
         spindexerMotor.setTargetPosition((int)target);
         spindexerMotor.setTargetPositionTolerance(3);
-        spindexerMotor.setPower(0.5);
+        spindexerMotor.setPower(0.1);
         spindexerMotor.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
+    }
+
+    public void setSpindexerPower(double power) {
+        spindexerMotor.setPower(power);
     }
 }
